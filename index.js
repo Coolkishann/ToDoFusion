@@ -2,8 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const path = require('path');
-
 
 const cookieParser =require('cookie-parser')// Import cookie-parser
 
@@ -14,12 +12,7 @@ dotenv.config();
 
 // Middleware
 app.use(cors());
-app.use(express.json());  
-app.use(express.static(__dirname + '/dist'));
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, './dist/index.html'));
-});
-
+app.use(express.json());
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)

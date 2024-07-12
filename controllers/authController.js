@@ -29,11 +29,11 @@ exports.login = async (req, res) => {
       name: user.name,
     };
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: '6d',
+      expiresIn: '1d',
     });
     console.log("🚀 ~ exports.login= ~ token:", token)
 
-    return res.cookie('access_token', token, { secure: true, }).status(200).json({ id: user._id, name: user.name, email: user.email, message: 'login success' });
+    return res.cookie('access_token', token, { secure: true, }).status(200).json({ id: user._id, name: user.name, email: user.email, message: 'login success',access_token: token, });
 
   } catch (error) {
     console.error(error);
